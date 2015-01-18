@@ -28,6 +28,9 @@ public class MyGame extends Game
     
     SpriteGroup BLOCKS;
     
+    Sprite racket;
+    SpriteGroup RACKETS;
+    
     @Override
     public void initResources()
     {
@@ -66,7 +69,10 @@ public class MyGame extends Game
          BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 210, 125));
          BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 250, 125));
          
-         
+         RACKETS = new SpriteGroup("Rackets group");
+         racket = new Sprite(getImage("Images/Racket.png"), ScreenX/2 - 100/2, ScreenY - 20);
+         racket.setID(1);
+         RACKETS.add(racket);
     }
     
     @Override
@@ -88,6 +94,8 @@ public class MyGame extends Game
         }
         
         BLOCKS.update(elapsedTime);
+        
+        RACKETS.update(elapsedTime);
     }
     
     @Override
@@ -96,6 +104,7 @@ public class MyGame extends Game
          background.render(g);
          BALLS.render(g);
          BLOCKS.render(g);
+         RACKETS.render(g);
     }
     
     public static void main(String[] args)
