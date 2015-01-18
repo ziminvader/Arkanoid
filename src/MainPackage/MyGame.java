@@ -5,7 +5,6 @@ import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.background.ColorBackground;
-import com.golden.gamedev.object.collision.AdvanceCollisionGroup;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -36,6 +35,7 @@ public class MyGame extends Game
     
     BallToBlocksCollision collisionBallBlocks;
     BallToRacketCollision collisionBallRacket;
+    BallToFieldBordersCollision collisionBallBorders;
     
     @Override
     public void initResources()
@@ -94,6 +94,10 @@ public class MyGame extends Game
          collisionBallRacket = new BallToRacketCollision();
          collisionBallRacket.setCollisionGroup(BALLS, RACKETS);
          collisionBallRacket.pixelPerfectCollision = true;
+         
+         collisionBallBorders = new BallToFieldBordersCollision();
+         collisionBallBorders.setCollisionGroup(BALLS, FIELD_BORDERS);
+         collisionBallBorders.pixelPerfectCollision = true;
     }
     
     @Override
@@ -122,6 +126,7 @@ public class MyGame extends Game
         
         collisionBallBlocks.checkCollision();
         collisionBallRacket.checkCollision();
+        collisionBallBorders.checkCollision();
         
         //for test only. Delete in release.
         if (keyDown(KeyEvent.VK_DOWN))
