@@ -33,6 +33,8 @@ public class MyGame extends Game
     
     SpriteGroup FIELD_BORDERS;
     
+    BallToBlocksCollision collisionBallBlocks;
+    
     @Override
     public void initResources()
     {
@@ -81,6 +83,10 @@ public class MyGame extends Game
          FIELD_BORDERS.add(new Sprite(getImage("Images/Field_End_Horizontal.png"), 0, ScreenY - 3));
          FIELD_BORDERS.add(new Sprite(getImage("Images/Field_End_Vertical.png"), 0, 0));
          FIELD_BORDERS.add(new Sprite(getImage("Images/Field_End_Vertical.png"), ScreenX - 3, 0));
+         
+         collisionBallBlocks = new BallToBlocksCollision();
+         collisionBallBlocks.setCollisionGroup(BALLS, BLOCKS);
+         collisionBallBlocks.pixelPerfectCollision = true;
     }
     
     @Override
@@ -106,6 +112,8 @@ public class MyGame extends Game
         RACKETS.update(elapsedTime);
         
         FIELD_BORDERS.update(elapsedTime);
+        
+        collisionBallBlocks.checkCollision();
     }
     
     @Override
