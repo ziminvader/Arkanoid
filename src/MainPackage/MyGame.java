@@ -26,6 +26,8 @@ public class MyGame extends Game
     double speed = 0.3;
     SpriteGroup BALLS;
     
+    SpriteGroup BLOCKS;
+    
     @Override
     public void initResources()
     {
@@ -37,6 +39,34 @@ public class MyGame extends Game
          Ball.setImmutable(true);
          Ball.setID(2);
          BALLS.add(Ball);
+         
+         BLOCKS = new SpriteGroup("Blocks group");
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 50, 50));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 90, 50));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 130, 50));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 170, 50));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 210, 50));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 250, 50));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 50, 75));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 90, 75));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 130, 75));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 170, 75));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 210, 75));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 250, 75));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 50, 100));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 90, 100));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 130, 100));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 170, 100));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 210, 100));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 250, 100));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 50, 125));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 90, 125));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 130, 125));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 170, 125));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 210, 125));
+         BLOCKS.add(new Sprite(getImage("Images/Block_standart.png"), 250, 125));
+         
+         
     }
     
     @Override
@@ -56,6 +86,8 @@ public class MyGame extends Game
                 BALLS.add(sprite[i]);
             }
         }
+        
+        BLOCKS.update(elapsedTime);
     }
     
     @Override
@@ -63,6 +95,7 @@ public class MyGame extends Game
     {
          background.render(g);
          BALLS.render(g);
+         BLOCKS.render(g);
     }
     
     public static void main(String[] args)
