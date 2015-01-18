@@ -29,6 +29,7 @@ public class MyGame extends Game
     SpriteGroup BLOCKS;
     
     Sprite racket;
+    int oldMouseX;
     SpriteGroup RACKETS;
     
     SpriteGroup FIELD_BORDERS;
@@ -77,6 +78,7 @@ public class MyGame extends Game
          racket = new Sprite(getImage("Images/Racket.png"), ScreenX/2 - 100/2, ScreenY - 20);
          racket.setID(1);
          RACKETS.add(racket);
+         oldMouseX = getMouseX();
          
          FIELD_BORDERS = new SpriteGroup("Field borders group");
          FIELD_BORDERS.add(new Sprite(getImage("Images/Field_End_Horizontal.png"), 0, 0));
@@ -142,6 +144,11 @@ public class MyGame extends Game
             Ball.setActive(true);
         }
         //end for test only.
+        if (getMouseX() != oldMouseX)
+        {
+            oldMouseX = getMouseX();
+            racket.setLocation(oldMouseX - 100/2, racket.getY());
+        }
     }
     
     @Override
