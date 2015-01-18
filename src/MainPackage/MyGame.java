@@ -114,6 +114,34 @@ public class MyGame extends Game
         FIELD_BORDERS.update(elapsedTime);
         
         collisionBallBlocks.checkCollision();
+        
+        //for test only. Delete in release.
+        if (keyDown(KeyEvent.VK_DOWN))
+        {
+            Ball.move(0, 0.8 * elapsedTime);
+        }
+        if (keyDown(KeyEvent.VK_UP))
+        {
+            Ball.move(0, -0.8 * elapsedTime);
+        }
+        if (keyDown(KeyEvent.VK_LEFT))
+        {
+            Ball.move(-0.8 * elapsedTime, 0);
+        }
+        if (keyDown(KeyEvent.VK_RIGHT))
+        {
+            Ball.move(0.8 * elapsedTime, 0);
+        }
+        if (keyDown(KeyEvent.VK_R))
+        {
+            Ball.moveTo(1, 50, 50, 1);// moveTo(speed, x, y, amount of pixels per <speed>)
+        }
+        if (keyPressed(KeyEvent.VK_ESCAPE))
+        {
+            Ball.setLocation(400, 400);
+            Ball.setActive(true);
+        }
+        //end for test only.
     }
     
     @Override
