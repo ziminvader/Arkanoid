@@ -35,6 +35,7 @@ public class MyGame extends Game
     SpriteGroup FIELD_BORDERS;
     
     BallToBlocksCollision collisionBallBlocks;
+    BallToRacketCollision collisionBallRacket;
     
     @Override
     public void initResources()
@@ -89,6 +90,10 @@ public class MyGame extends Game
          collisionBallBlocks = new BallToBlocksCollision();
          collisionBallBlocks.setCollisionGroup(BALLS, BLOCKS);
          collisionBallBlocks.pixelPerfectCollision = true;
+         
+         collisionBallRacket = new BallToRacketCollision();
+         collisionBallRacket.setCollisionGroup(BALLS, RACKETS);
+         collisionBallRacket.pixelPerfectCollision = true;
     }
     
     @Override
@@ -116,6 +121,7 @@ public class MyGame extends Game
         FIELD_BORDERS.update(elapsedTime);
         
         collisionBallBlocks.checkCollision();
+        collisionBallRacket.checkCollision();
         
         //for test only. Delete in release.
         if (keyDown(KeyEvent.VK_DOWN))
