@@ -31,6 +31,8 @@ public class MyGame extends Game
     Sprite racket;
     SpriteGroup RACKETS;
     
+    SpriteGroup FIELD_BORDERS;
+    
     @Override
     public void initResources()
     {
@@ -73,6 +75,12 @@ public class MyGame extends Game
          racket = new Sprite(getImage("Images/Racket.png"), ScreenX/2 - 100/2, ScreenY - 20);
          racket.setID(1);
          RACKETS.add(racket);
+         
+         FIELD_BORDERS = new SpriteGroup("Field borders group");
+         FIELD_BORDERS.add(new Sprite(getImage("Images/Field_End_Horizontal.png"), 0, 0));
+         FIELD_BORDERS.add(new Sprite(getImage("Images/Field_End_Horizontal.png"), 0, ScreenY - 3));
+         FIELD_BORDERS.add(new Sprite(getImage("Images/Field_End_Vertical.png"), 0, 0));
+         FIELD_BORDERS.add(new Sprite(getImage("Images/Field_End_Vertical.png"), ScreenX - 3, 0));
     }
     
     @Override
@@ -96,6 +104,8 @@ public class MyGame extends Game
         BLOCKS.update(elapsedTime);
         
         RACKETS.update(elapsedTime);
+        
+        FIELD_BORDERS.update(elapsedTime);
     }
     
     @Override
@@ -105,6 +115,7 @@ public class MyGame extends Game
          BALLS.render(g);
          BLOCKS.render(g);
          RACKETS.render(g);
+         FIELD_BORDERS.render(g);
     }
     
     public static void main(String[] args)
