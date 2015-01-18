@@ -20,23 +20,24 @@ public class MyGame extends Game
     static int ScreenX = 1024;
     static int ScreenY = 768;
     
+    Background background;
+    
     @Override
     public void initResources()
     {
-         
+         background = new ColorBackground(Color.DARK_GRAY, ScreenX, ScreenY);
     }
     
     @Override
     public void update(long elapsedTime)
     {
-        
-         
+        background.update(elapsedTime); 
     }
     
     @Override
     public void render(Graphics2D g)
     {
-         
+         background.render(g);
     }
     
     public static void main(String[] args)
